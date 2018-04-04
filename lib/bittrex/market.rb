@@ -22,6 +22,14 @@ module Bittrex
       client.get('public/getmarkets').map{|data| new(data) }
     end
 
+    def self.buylimit (pairname,price,volume)
+      client.get("/market/buylimit",{
+          market:pairname,
+          quantity:volume,
+          rate:price
+      })
+    end
+
     private
 
     def self.client
